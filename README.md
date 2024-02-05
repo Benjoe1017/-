@@ -28,10 +28,15 @@ https://like996.icu:1205/register.html?inviteKey=e1fac91867cb461188950ed8854bdfe
 2.透過郵件連結安裝tampermonkey腳本
 
 3.回到學習歷程登入頁面，點選右上角擴充功能
-![螢幕擷取畫面 2024-02-05 011414](https://github.com/Benjoe1017/DistrictDefaultSelector/assets/108409184/329bdc9b-bb86-4804-afb0-e4b590f04915)
+![螢幕擷取畫面 2024-02-05 123813](https://github.com/Benjoe1017/DistrictDefaultSelector/assets/108409184/a4dc9fcb-9bf2-4bef-823e-2a2ce64b3ccf)
+
+
 
 4.點選規則管理
-![螢幕擷取畫面 2024-02-05 011439](https://github.com/Benjoe1017/DistrictDefaultSelector/assets/108409184/f213ee0c-64fa-46c0-be83-301677ce5564)
+
+![螢幕擷取畫面 2024-02-05 123843](https://github.com/Benjoe1017/DistrictDefaultSelector/assets/108409184/7a363850-16a0-44ac-a639-2e1c6b4891e0)
+
+
 *提示音可以在更多設置中關閉
 點選添加數字驗證碼規則，之後按照提示，右鍵點選驗證碼的圖示，左鍵點選輸入框
 
