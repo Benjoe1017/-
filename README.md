@@ -15,7 +15,7 @@ Part1(自動預設行政區)
 ![螢幕擷取畫面 2024-02-05 011439](https://github.com/Benjoe1017/-/assets/108409184/b89b7d84-daed-4d44-916a-bdba71b4c580)
 
 Part2(自動填入驗證碼)
-<二>驗證碼(這部分是用網路上大神已經做好的，因為這部份實在太複雜。如果不信任可以跳過，驗證碼可以自己打)
+(這部分是用網路上大神已經做好的，因為這部份實在太複雜。如果不信任可以跳過，驗證碼可以自己打)
 
 前置作業：安裝擴充應用程式 https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne
 
