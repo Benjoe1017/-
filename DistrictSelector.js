@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         學習歷程登入優化神器
 // @namespace    http://your-namespace.com/
-// @version      1.1
-// @description  Select district and school using Tampermonkey menu command after pressing the login button
+// @version      1.3
+// @description  Auto select district and school
 // @author       Chiu Kuan Hsun
 // @match        https://highschool.kh.edu.tw/Login.action
 // @grant        GM_registerMenuCommand
@@ -64,16 +64,30 @@ class DistrictSchoolSelector {
             loginButton.addEventListener('click', () => {
                 // Execute your logic when the login button is clicked
                 this.onLoginButtonClicked();
+             // Listen for keydown event on the document
+            });
+        document.addEventListener('keydown', (event) => {
+                // Check if the pressed key is Enter (key code 13)
+                if (event.key === 'Enter') {
+                    // Execute your logic when the Enter key is pressed
+                    this.onEnterKeyPressed();
+                }
             });
         } else {
             // If the login button is not found, check again after a short delay
             setTimeout(() => this.waitForLoginButton(), 500);
         }
+
     }
 
     onLoginButtonClicked() {
         // Execute your logic here when the login button is clicked
         console.log('Login button clicked!');
+        this.showSelectorDialog();
+    }
+    onEnterKeyPressed() {
+        // Execute your logic here when the Enter key is pressed
+        console.log('Enter key pressed!');
         this.showSelectorDialog();
     }
 }
