@@ -1,6 +1,6 @@
 使用說明：
 此為tampermonkey適用的腳本
-可直接到 https://greasyfork.org/zh-TW/scripts/486594/versions/new?locale_override=1 進行安裝，或複製DistrictSelector.js的代碼自行貼上
+可直接到 https://greasyfork.org/zh-TW/scripts/486594-%E5%AD%B8%E7%BF%92%E6%AD%B7%E7%A8%8B%E7%99%BB%E5%85%A5%E5%84%AA%E5%8C%96%E7%A5%9E%E5%99%A8?locale_override=1 進行安裝，或複製DistrictSelector.js的代碼自行貼上
 
 第一次使用，請先按照原本登入的步驟進行登入，程式會自動記錄第一次選擇的學校。
 接下來進入學習歷程登入介面時，就會預設好行政區以及學校。
