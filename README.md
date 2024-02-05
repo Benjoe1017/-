@@ -16,6 +16,9 @@ Part1(自動預設行政區)
 
 Part2(自動填入驗證碼)
 <二>驗證碼(這部分是用網路上大神已經做好的，因為這部份實在太複雜。如果不信任可以跳過，驗證碼可以自己打)
+
+前置作業：安裝擴充應用程式 https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne
+
 1.註冊(作者為了防止濫用)
 https://like996.icu:1205/register.html?inviteKey=e1fac91867cb461188950ed8854bdfe3
 (郵件會在垃圾訊息那邊)
