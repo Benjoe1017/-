@@ -38,6 +38,7 @@ https://like996.icu:1205/register.html?inviteKey=e1fac91867cb461188950ed8854bdfe
 
 
 *提示音可以在更多設置中關閉
+
 點選添加數字驗證碼規則，之後按照提示，右鍵點選驗證碼的圖示，左鍵點選輸入框
 
 5.Finished!
