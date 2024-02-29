@@ -1,4 +1,8 @@
-使用說明：
+已經打包上傳google擴充應用程式
+https://chromewebstore.google.com/detail/%E5%AD%B8%E7%BF%92%E6%AD%B7%E7%A8%8B%E7%99%BB%E5%85%A5%E5%84%AA%E5%8C%96/gnomiamablgcldckhaopphggdggapoak?hl=zh-TW
+
+
+使用說明(tampermonkey)：
 
 Part1(自動預設行政區)
 此為tampermonkey適用的腳本，請先安裝 https://chromewebstore.google.com/detail/%E7%AF%A1%E6%94%B9%E7%8C%B4/dhdgffkkebhmkfjojejmpbldmpobfkfo
