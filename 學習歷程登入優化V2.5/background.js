@@ -1,6 +1,5 @@
 // background.js
 
-// 獲取預設學校代碼和索引
 chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.sync.get('schNoValue');
     chrome.storage.sync.get('schNoSelectIndex');
@@ -8,10 +7,6 @@ chrome.runtime.onInstalled.addListener(function() {
     });
 
 chrome.contextMenus.onClicked.addListener(resetSchool) ;
-
-// 監聽菜單命令
-
-
 
 
 
@@ -53,14 +48,10 @@ chrome.storage.sync.get('autorecognize', function (data) {
 
 chrome.storage.sync.get('todayKey', function(result){
     var currentDate = new Date();
-    
-    // 獲取當前日期的年、月、日
     var year = currentDate.getFullYear();
     var month = currentDate.getMonth() + 1; // 月份從 0 開始，所以要加 1
     var day = currentDate.getDate();
     
-
-    // 構建當天的鍵值，例如 "2024-05-11"
     var todayKey = year + '-' + month + '-' + day;
 
 
