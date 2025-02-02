@@ -1,17 +1,17 @@
 /* 基本樣式 */
 .save-form {
-    border-radius: 0.75rem; /* 12px */
+    border-radius: 0.75rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0.75rem; /* 12px */
+    padding: 0.75rem;
     font-family: Arial, sans-serif;
     
 }
 
 .save-fieldset {
     border: 0.25rem dotted #6573c3;
-    padding: 1.25rem; /* 20px */
+    padding: 1.25rem; 
 }
 
 .save-legend {
@@ -21,20 +21,20 @@
 }
 
 .save-label {
-    font-size: 0.75rem; /* 12px */
+    font-size: 0.75rem;
     font-weight: bold;
-    margin-bottom: 0.25rem; /* 4px */
+    margin-bottom: 0.25rem;
     position: relative;
 }
 
 .save-input {
     width: 90%;
-    padding: 0.5rem; /* 8px */
-    margin-top: 0.25rem; /* 4px */
-    margin-bottom: 0.5rem; /* 8px */
+    padding: 0.5rem; 
+    margin-top: 0.25rem; 
+    margin-bottom: 0.5rem; 
     outline: none;
     border: none;
-    border-radius: 0.25rem; /* 4px */
+    border-radius: 0.25rem;
     box-shadow: 0 0 0 2px transparent;
     transition: box-shadow 0.3s ease;
 }
@@ -46,18 +46,18 @@
 .save-forgot {
     display: block;
     text-align: right;
-    font-size: 0.75rem; /* 12px */
+    font-size: 0.75rem;
     color: #6573c3;
-    margin-bottom: 1rem; /* 16px */
+    margin-bottom: 1rem; 
 }
 
 .save-button {
     width: 100%;
     background-color: #6573c3;
     color: #ffffff;
-    padding: 0.5rem; /* 8px */
+    padding: 0.5rem;
     border: none;
-    border-radius: 0.25rem; /* 4px */
+    border-radius: 0.25rem;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
