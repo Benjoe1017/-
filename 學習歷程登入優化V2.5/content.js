@@ -1,6 +1,5 @@
 // content.js
 chrome.storage.sync.get('schNoValue', function(data) {
-    // 檢查是否成功獲取值
     if (chrome.runtime.lastError) {
         console.error("Error retrieving 'schNoValue': " + chrome.runtime.lastError.message);
         return;
@@ -20,7 +19,6 @@ chrome.storage.sync.get('schNoValue', function(data) {
 
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    // 如果收到重新加載頁面的指令，則執行重新加載操作
     if (message.action === "reloadPage") {
         chrome.storage.sync.remove(["schNoValue", "schNoSelectIndex","schNoText"], function() {console.log('reset successful')});
         alert('設定完成！將於刷新頁面後生效');
@@ -48,9 +46,7 @@ class DistrictSchoolSelector {
             this.selectedOptionText = result.schNoText;
             console.log("學校名稱:"+result.schNoText)
         });
-        // Wait for the login button to be pressed
         this.waitForLoginButton();
-        //this.recognizebase64pic();
         
         this.autoClick();
         this.getAccountandPassword();
@@ -63,7 +59,6 @@ class DistrictSchoolSelector {
                 var schNoSelectIndex = schNoElement ? schNoElement.selectedIndex : '';
                 var selectedOptionText = schNoElement.options[schNoSelectIndex].textContent;
 
-                // 將數據保存到 Chrome storage 中
                 
                 
                 chrome.storage.sync.get('schNoValue', function (result) {
@@ -100,8 +95,6 @@ class DistrictSchoolSelector {
     }
     
 
-   
-    // 定義等待登錄按鈕的函數
     waitForLoginButton() {
         const loginButton = document.getElementById('login');
         if (loginButton) {
@@ -109,9 +102,7 @@ class DistrictSchoolSelector {
                 this.Mainfunction();
             });
             document.addEventListener('keydown', (event) => {
-                // Check if the pressed key is Enter (key code 13)
                 if (event.key === 'Enter') {
-                    // Execute your logic when the Enter key is pressed
                     this.Mainfunction();
                 }
             });
@@ -128,13 +119,13 @@ class DistrictSchoolSelector {
            console.log(checkstatus)
         });    
         if(checkstatus == "on"){
-                const text = textElement.value.trim(); // 獲取文本內容並去除空白
+                const text = textElement.value.trim(); 
                 if (text.length == 4) {
                    console.log('驗證碼已填上：', text);
                   setTimeout(() => document.querySelector('#login').click(),500);
                 }
                 textElement.addEventListener('input', function(event) {
-                const text = event.target.value.trim(); // 獲取文本內容並去除空白
+                const text = event.target.value.trim(); 
                 if (text.length == 4) {
                    console.log('驗證碼已填上：', text);
                   setTimeout(() => document.querySelector('#login').click(),500);
@@ -143,7 +134,6 @@ class DistrictSchoolSelector {
                 });
             }
              else {
-                // If the login button is not found, check again after a short delay
                 setTimeout(() => this.autoClick(), 500);
             }
         
@@ -167,7 +157,6 @@ class DistrictSchoolSelector {
     }
 
     useFeature() {
-        // 獲取當天的使用次數，如果存儲中不存在，則設置為 2
         chrome.storage.sync.get('autorecognize', function (data) {
             if(data.autorecognize==undefined){
                 chrome.storage.sync.set({autorecognize: 2})
@@ -176,20 +165,15 @@ class DistrictSchoolSelector {
                 console.log(data.autorecognize)
             }
         
-           // 獲取當前日期和時間
-        
 
         chrome.storage.sync.get('todayKey', function(result){
             var currentDate = new Date();
             
-            // 獲取當前日期的年、月、日
             var year = currentDate.getFullYear();
             var month = currentDate.getMonth() + 1; // 月份從 0 開始，所以要加 1
             var day = currentDate.getDate();
             var seconds = currentDate.getSeconds();
 
-            
-            // 構建當天的鍵值，例如 "2024-05-11"
             var todayKey = year + '-' + month + '-' + day;
 
 
@@ -228,12 +212,10 @@ function checkusagecount(usageCount){
         autorecognizestatus = result.checked2;
         console.log(autorecognizestatus)
         if (usageCount > 0 && autorecognizestatus == "on") {
-        // 執行功能
         console.log('執行功能');
         lighton();
         recognizebase64pic(usageCount)
     } else {
-        // 超過了限制，拒絕執行功能
         console.log('不執行自動填入');
     }
     });
@@ -244,7 +226,6 @@ function recognizebase64pic(usageCount)
 {
     var notificationId = 'notification'
     const self = this;
-    // Function to extract base64 string from image
     function extractBase64String() {
         const imageElement = document.getElementById('validatePic');
         if (!imageElement) {
@@ -263,9 +244,7 @@ function recognizebase64pic(usageCount)
     }
 
 
-    // Function to send base64 string to Google Vision API for recognition
     function recognizeImage(base64String) {
-        // Replace 'YOUR_API_KEY' with your actual Google Cloud API key
        $.post('https://script.google.com/macros/s/AKfycbybHVOHoph4bbKF5JOh6OSBvQiXkZFnmrxDQWSOvXk04IVgSIs4Gqrq6wl6khZHUCtv2Q/exec',{
     data:base64String,
 },function(e){
@@ -275,7 +254,6 @@ function recognizebase64pic(usageCount)
                 const recognizedText = e;
                 validateCodeInput.value = recognizedText;
                 console.log('Text filled in input field:', recognizedText);
-                // Trigger input event to simulate user input
                 validateCodeInput.dispatchEvent(new Event('input', { bubbles: true }));
                 lightoff();
             } else {
@@ -283,8 +261,6 @@ function recognizebase64pic(usageCount)
             }
 });
     }
-
-    // Main function to execute the process
     function main() {
         const base64String = extractBase64String();
         if (base64String) {
@@ -293,22 +269,16 @@ function recognizebase64pic(usageCount)
             chrome.storage.sync.set({autorecognize : usageCount-1});
         }
     }
-
-    // Execute main function after 2 seconds delay
     setTimeout(main, 100);
 };
 function lighton(){
     var input = document.getElementById('validateCode');
-
-// 添加滑鼠移入事件
-
-    // 使用requestAnimationFrame來實現動畫
     var start = null;
     function rotateGlow(timestamp) {
         if (!start) start = timestamp;
         var progress = timestamp - start;
-        input.style.boxShadow = '0 0 10px 5px rgb(255, 143, 0)'; // 光芒的顏色和尺寸可以自行調整
-        input.style.transform = 'rotate(' + progress / 10 + 'deg)'; // 調整旋轉的速度和方向
+        input.style.boxShadow = '0 0 10px 5px rgb(255, 143, 0)'; 
+        input.style.transform = 'rotate(' + progress / 10 + 'deg)';
         
     }
     requestAnimationFrame(rotateGlow);
@@ -325,18 +295,14 @@ function lightoff(){
 
 function createNotification(message) {
     var notification = document.createElement('div');
-    // 設置提示元素的樣式
     notification.style.position = 'absolute';
     
-    // 獲取 validateCode 元素的位置
     var validateCodeElement = document.getElementById('validateCode');
     var rect = validateCodeElement.getBoundingClientRect();
 
-    // 計算提示元素的中心位置
     var centerX = rect.left + rect.width / 2 + window.scrollX;
     var centerY = rect.top + rect.height / 2 + window.scrollY;
 
-    // 設置提示元素的位置
     notification.style.top = (centerY - notification.offsetHeight / 2) + 'px';
     notification.style.left = (centerX - notification.offsetWidth / 2) + 'px';
     notification.style.transform = 'translate(-50%, -50%)';
@@ -345,17 +311,13 @@ function createNotification(message) {
     notification.style.border = '1px solid #000000';
     notification.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
     notification.style.zIndex = '9999';
-    // 設置提示元素的內容
     notification.textContent = message;
-    notification.id = 'notification'; // 定義一個 id
-    // 將提示元素添加到 body 元素中
+    notification.id = 'notification';
     document.body.appendChild(notification);
 
-    // 當需要移除時，調用 removeNotification 函數
     return notification.id;
 }
 
-// 定義移除通知的函數
 function removeNotification(notificationId) {
     var notification = document.getElementById(notificationId);
     if (notification) {
