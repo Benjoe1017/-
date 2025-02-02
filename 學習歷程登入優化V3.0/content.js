@@ -1,6 +1,5 @@
 // content.js
 chrome.storage.sync.get('schNoValue', function(data) {
-    // 檢查是否成功獲取值
     if (chrome.runtime.lastError) {
         console.error("Error retrieving 'schNoValue': " + chrome.runtime.lastError.message);
         return;
@@ -20,7 +19,6 @@ chrome.storage.sync.get('schNoValue', function(data) {
 
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    // 如果收到重新加載頁面的指令，則執行重新加載操作
     if (message.action === "reloadPage") {
         chrome.storage.sync.remove(["schNoValue", "schNoSelectIndex","schNoText"], function() {console.log('reset successful')});
         alert('設定完成！將於刷新頁面後生效');
@@ -48,9 +46,7 @@ class DistrictSchoolSelector {
             this.selectedOptionText = result.schNoText;
             console.log("學校名稱:"+result.schNoText)
         });
-        // Wait for the login button to be pressed
         this.waitForLoginButton();
-        //this.recognizebase64pic();
         
         this.autoClick();
         this.getAccountandPassword();
@@ -63,9 +59,6 @@ class DistrictSchoolSelector {
                 var schNoSelectIndex = schNoElement ? schNoElement.selectedIndex : '';
                 var selectedOptionText = schNoElement.options[schNoSelectIndex].textContent;
 
-                // 將數據保存到 Chrome storage 中
-                
-                
                 chrome.storage.sync.get('schNoValue', function (result) {
                     this.schNoValue = result.schNoValue;
                     if(!result.schNoValue){
@@ -99,9 +92,6 @@ class DistrictSchoolSelector {
                 });
     }
     
-
-   
-    // 定義等待登錄按鈕的函數
     waitForLoginButton() {
         const loginButton = document.getElementById('login');
         const loginButton2 = document.getElementById('openId');
@@ -113,9 +103,7 @@ class DistrictSchoolSelector {
                 this.Mainfunction();
             });
             document.addEventListener('keydown', (event) => {
-                // Check if the pressed key is Enter (key code 13)
                 if (event.key === 'Enter') {
-                    // Execute your logic when the Enter key is pressed
                     this.Mainfunction();
                 }
             });
@@ -132,13 +120,13 @@ class DistrictSchoolSelector {
            console.log(checkstatus)
         });    
         if(checkstatus == "on"){
-                const text = textElement.value.trim(); // 獲取文本內容並去除空白
+                const text = textElement.value.trim(); 
                 if (text.length == 4) {
                    console.log('驗證碼已填上：', text);
                   setTimeout(() => document.querySelector('#login').click(),500);
                 }
                 textElement.addEventListener('input', function(event) {
-                const text = event.target.value.trim(); // 獲取文本內容並去除空白
+                const text = event.target.value.trim(); 
                 if (text.length == 4) {
                    console.log('驗證碼已填上：', text);
                   setTimeout(() => document.querySelector('#login').click(),500);
@@ -147,7 +135,6 @@ class DistrictSchoolSelector {
                 });
             }
              else {
-                // If the login button is not found, check again after a short delay
                 setTimeout(() => this.autoClick(), 500);
             }
         
@@ -175,18 +162,18 @@ class DistrictSchoolSelector {
 
 function createNotification(message) {
     var notification = document.createElement('div');
-    // 設置提示元素的樣式
+   
     notification.style.position = 'absolute';
     
-    // 獲取 validateCode 元素的位置
+    
     var validateCodeElement = document.getElementById('validateCode');
     var rect = validateCodeElement.getBoundingClientRect();
 
-    // 計算提示元素的中心位置
+    
     var centerX = rect.left + rect.width / 2 + window.scrollX;
     var centerY = rect.top + rect.height / 2 + window.scrollY;
 
-    // 設置提示元素的位置
+   
     notification.style.top = (centerY - notification.offsetHeight / 2) + 'px';
     notification.style.left = (centerX - notification.offsetWidth / 2) + 'px';
     notification.style.transform = 'translate(-50%, -50%)';
@@ -195,17 +182,14 @@ function createNotification(message) {
     notification.style.border = '1px solid #000000';
     notification.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
     notification.style.zIndex = '9999';
-    // 設置提示元素的內容
+   
     notification.textContent = message;
-    notification.id = 'notification'; // 定義一個 id
-    // 將提示元素添加到 body 元素中
+    notification.id = 'notification'; 
+    
     document.body.appendChild(notification);
 
-    // 當需要移除時，調用 removeNotification 函數
     return notification.id;
 }
-
-// 定義移除通知的函數
 function removeNotification(notificationId) {
     var notification = document.getElementById(notificationId);
     if (notification) {
