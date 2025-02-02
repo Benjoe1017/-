@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>District Selector Popup</title>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="styles.css">
+ </head>
+ <style>
+  body {
+    width: 300px; /* 設置彈出視窗的寬度 */
+    height: auto; /* 設置彈出視窗的高度 */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    background-color: #a5e2ff;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 24px; /* 設置標題文字的字型大小為24像素 */
+  }
+  button {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+  }
+  img {
+            float: left; /* 將圖片浮動到左側 */
+            margin-right: 10px; /* 調整圖片與文字之間的距離 */
+            margin-bottom: 0px; /* 將圖片下移 */
+  }
+  .PopupLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    user-select: none;
+    font-size: 25px;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    user-select: none;
+    padding: 10px;
+  }
+  footer {
+    position: relative;
+    top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: .625rem
+  }
+  .button-container {
+    display: flex;
+  }
+  .switch-container {
+    display: flex;
+  }
+  .switch-container2 {
+    display: grid; /* 將容器設置為網格佈局 */
+    grid-template-columns: 0fr 6fr 5fr; /* 定義網格列，每列平均分配可用空間 */
+  }
+  .button-container button {
+    flex-grow: 2;
+    margin: 0 5px;
+  }
+  button[id="Information"] {
+    background-color:#2b4e2c;
+    color: #ffffff;
+    width: 30%;
+  }
+  button[id="Openid"] {
+    background-color:#2b4e2c;
+    color: #ffffff;
+    width: 25%;
+  }
+
+  button[id="Setting"] {
+    background-color:#4CAF50;
+    color: #ffffff;
+    width: 45%;
+  }
+
+  label[class="switch-Text"]{
+    position: relative;
+    top: 3px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
+  label[id="limittime"]{
+    position: relative;
+    border: 1px solid #000000;
+    top: -4px;
+    left: 5px;
+    font-family: Arial, sans-serif;
+    display: block;
+    font-size: 13px;
+  }
+  label[id="notice"]{
+    position: relative;
+    border: 1.5px solid #002ed6;
+    font-family: Arial, sans-serif;
+    display: block;
+    font-size: 12px;
+    color: #002ed6;
+    text-align: center;
+  }
+  label[id="notice2"]{
+    top: -8px;
+    position: relative;
+    border: 1.5px solid #008fd6;
+    font-family: Arial, sans-serif;
+    display: block;
+    font-size: 12px;
+    color: #0096d6;
+    text-align: center;
+  }
+  .info-container {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .info-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    width: 268px;
+    margin-bottom: 10px;
+  }
+
+  
+
+  .info-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .open-link-icon {
+    width: 24px;
+    height: 24px;
+  }
+        
+  
+</style>
+ <body>
+  <header id="PopupLogo" class="PopupLogo">
+    <img src="hello_extensions.png" alt="Image" width="60" height="60" id="PopupLogo">
+    <p class="u-mZ">學習歷程登入優化</p>
+  </header>
+  <div class="button-container">
+    <!-- 切換頁面的按鈕 -->
+    <button id="Information">Information</button>
+    <button id="Setting">Setting</button>
+    <button id="Openid">OpenId</button>
+</div>
+<div id="save" class="save-form">
+    
+        <fieldset class="save-fieldset">
+            <legend class="save-legend">自動填入帳密</legend>
+            <label id="notice2">帳密資訊將儲存在本地，無洩漏風險 </label>
+            <label for="account" class="save-label">Account </label>     
+            <input type="account" id="account" class="save-input" required="">   
+            <label for="password" class="save-label">Password  </label>
+            <input type="password" id="password" class="save-input" required="">
+            <button id="save-button" class="save-button">Save</button>
+        </fieldset>
+    
+</div>
+<div class="switch-container">
+    <label class="toggle-switch">
+    <input id="toggle-switch" type="checkbox">
+    <div class="toggle-switch-background">
+      <div class="toggle-switch-handle"></div>
+    </div>
+  </label>
+  <label class="switch-Text">自動點擊登入按鈕 </label> 
+</div>
+
+<a href="https://chromewebstore.google.com/detail/%E9%A9%97%E8%AD%89%E7%A2%BC%E8%AD%98%E5%88%A5/eioihpenjnngakkfjonammhiloanmcgg" target="_blank" class="info-container">
+  <div class="info-content">
+    <span class="info-text">自動填入驗證碼</span>
+    <img src="openlink.jpg" alt="Open Link" class="open-link-icon">
+  </div>
+</a>
+<div><label id=notice>注意事項：如有安裝驗證碼自動辨識時，請確保當前已經記錄了學校資訊以及填入了上方的帳號密碼資訊，否則將會出錯！</label></div>
+
+
+<footer><a href="https://forms.gle/JRK8sSwiejbLFafo8" target="_blank">使用回饋+BUG回報</a><a href="https://github.com/ChiuKuanHsun" target="_blank">© 2024 CHIU KUAN HSUN</a>
+  <script src="setting.js"></script>
+ </body>
+</html>
